@@ -1,0 +1,14 @@
+{
+   "add": {
+       "rest": "/rest/library/novel/create"
+   },
+   "delete": {
+       "rest": "/rest/library/novel/delete"
+   },
+   "update": {
+       "rest": "/rest/library/novel/update"
+   },
+   "retrive": {
+       "rest": "/rest/library/novel/retrive"
+   }
+}
