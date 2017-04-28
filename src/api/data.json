@@ -1,0 +1,14 @@
+{
+    "list": [
+        {
+            "name":"Catalog",
+            "version": "1.0.0",
+            "type": "Service"
+        },
+        {
+            "name":"Vendor",
+            "version": "1.0.5",
+            "type": "Resource"
+        }
+    ]
+}

@@ -1,4 +1,6 @@
-let _state = {}
+let _state = {
+    "list": []
+}
 
 export default function MSHelperReducer(state=_state,action){
     switch(action.type){
@@ -9,7 +11,7 @@ export default function MSHelperReducer(state=_state,action){
         case 'UPDATE':
             return state;
         case 'RETRIVE':
-            return state;
+            return Object.assign({}, action.data);
         default:
             return state;
     }

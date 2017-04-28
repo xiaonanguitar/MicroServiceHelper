@@ -9,6 +9,6 @@
        "rest": "/rest/library/novel/update"
    },
    "retrive": {
-       "rest": "/rest/library/novel/retrive"
+       "rest": "/api/data.json"
    }
 }
