@@ -1,5 +1,7 @@
 let _state = {
-    "visible": false
+    "visible": false,
+    "record": null,
+    "mode": 'create'
 }
 
 export default function ModalReducer(state=_state,action){
@@ -7,7 +9,8 @@ export default function ModalReducer(state=_state,action){
         case 'SHOW':
             return {
                 "visible": true,
-                "record": null
+                "record": null,
+                "mode": 'create'
             };
         case 'HIDDEN':
             return  {
@@ -16,7 +19,8 @@ export default function ModalReducer(state=_state,action){
         case 'EDIT': 
             return {
                 "visible": true,
-                "record": action.record
+                "record": action.record,
+                "mode": 'edit'
             }
         default:
             return state;
