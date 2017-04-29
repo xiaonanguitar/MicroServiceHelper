@@ -5,6 +5,7 @@ import MSHelperReducer from '../reducer';
 import APILoaderReducer from '../reducer/APILoader';
 import ModalReducer from '../reducer/Modal';
 import EditorReducer from '../reducer/Editor';
+import CreatorReducer from '../reducer/Creator';
 
 const finalCreateStore = compose(applyMiddleware(
     ThunkMiddleware,
@@ -14,7 +15,8 @@ const reducer = combineReducers({
     MSHelperState:MSHelperReducer,
     APILoaderState: APILoaderReducer,
     ModalState: ModalReducer,
-    EditorState: EditorReducer
+    EditorState: EditorReducer,
+    CreatorState: CreatorReducer
 })
 
 export default function configureStore(initialState) {

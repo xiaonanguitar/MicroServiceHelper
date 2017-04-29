@@ -9,7 +9,7 @@ export default function ModalReducer(state=_state,action){
         case 'SHOW':
             return {
                 "visible": true,
-                "record": null,
+                "record": {},
                 "mode": 'create'
             };
         case 'HIDDEN':

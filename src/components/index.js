@@ -25,7 +25,8 @@ class App extends Component {
 
     handleOk() {
         const {handleOk} = this.props.MSActions;
-        handleOk();
+        const {editorState} = this.props;
+        handleOk(editorState);
     }
 
     handleCancel() {
@@ -60,18 +61,29 @@ class App extends Component {
     change(e) {
         console.log(e.target.name);
         console.log(e.target.value);
-        const {dispatch,modalState} = this.props;
-        let record = Object.assign({},modalState.record);
-        record[e.target.name] = e.target.value
-        dispatch({
-            type: "MODIFY",
-            record
-        })
+        const {dispatch,modalState,creatorState} = this.props;
+        
+        if(modalState.mode === "edit"){
+            let record = Object.assign({},modalState.record);
+            record[e.target.name] = e.target.value
+            dispatch({
+                type: "MODIFY",
+                record
+            })
+        }else{
+            let record = Object.assign({},creatorState);
+            record[e.target.name] = e.target.value
+            dispatch({
+                type: "CREATEEDITOR",
+                record
+            })
+        }
+        
     }
 
     render() {
         const {loadApiData,createShowModal,editShowModal} = this.props.MSActions;
-        const {msData,modalState,editorState,dispatch} = this.props;
+        const {msData,modalState,editorState,creatorState,dispatch} = this.props;
         const dataSource = this.getDataSource(msData.list);
 
         let columns = this.getColumns(msData.list);
@@ -127,7 +139,8 @@ class App extends Component {
                                     <div key={item.key}>
                                         <label>{item.title}</label>
                                         <Input 
-                                            value={modalState.mode==="edit"?editorState[item.title]:""}
+                                            value={modalState.mode==="edit"?
+                                                editorState[item.title]:creatorState[item.title]}
                                             name={item.title}
                                             onChange={(e)=>this.change(e)}
                                         />
@@ -147,7 +160,8 @@ export default connect(state=>{
         apiData: state.APILoaderState,
         msData: state.MSHelperState,
         modalState: state.ModalState,
-        editorState: state.EditorState
+        editorState: state.EditorState,
+        creatorState: state.CreatorState
     }
 },dispatch=>{
     return {

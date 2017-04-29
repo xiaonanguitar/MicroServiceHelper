@@ -62,12 +62,16 @@ export function handleOk(body) {
         const modalState = state.ModalState;
         const api = state.APILoaderState;
         if(modalState.mode === "create"){
-            console.log('create');
+            fetch(api.add.rest)
+            .then(res=>{
+               dispatch({type:"HIDDEN"})
+            })
         }else{
-            console.log('edit');
+            fetch(api.update.rest)
+            .then(res=>{
+               dispatch({type:"HIDDEN"})
+            })
         }
-        
-        dispatch({type:"HIDDEN"})
      }
 }
 
