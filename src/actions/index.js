@@ -33,6 +33,7 @@ export function loadData(data) {
 
 export function createShowModal() {
      return (dispatch,getState)=>{
+         dispatch({type:"INITCREATOR"})
          dispatch({type:"SHOW"})
      }
 }

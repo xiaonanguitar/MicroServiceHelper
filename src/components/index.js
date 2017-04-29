@@ -114,7 +114,9 @@ class App extends Component {
         return (
             <div className="mainContent">
                 <div className="toolBar">
-                    <Button type="primary" onClick={()=>createShowModal()}>Create</Button>
+                    <Button type="primary" onClick={
+                            ()=>createShowModal()
+                        }>Create</Button>
                     <span style={{display:'inline-block',width:'10px',height:'10px'}}></span>
                     <Button type="primary">Delete</Button>
                     <span style={{display:'inline-block',width:'10px',height:'10px'}}></span>
