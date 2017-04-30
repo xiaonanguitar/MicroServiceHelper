@@ -98,7 +98,7 @@ class App extends Component {
                     <a onClick={()=>{
                         dispatch({type:"MODIFY",record})
                         editShowModal(record)
-                    }}><img src={editImg}/></a> 
+                    }}><img style={{display:'inline-block',width:'16px',height:'16px'}} src={editImg}/></a> 
                     <Popconfirm title="Are you sure？" okText="Yes" cancelText="No" onConfirm={()=>deleteRecord(record)}>
                         <a><img src={deleteImg}/></a>
                     </Popconfirm>
