@@ -79,12 +79,18 @@ export function handleOk(body) {
         const modalState = state.ModalState;
         const api = state.APILoaderState;
         if(modalState.mode === "create"){
-            fetch(api.add.rest)
+            fetch(api.add.rest,{
+                method: "POST",
+                body: JSON.stringify(body)
+            })
             .then(res=>{
                dispatch({type:"HIDDEN"})
             })
         }else{
-            fetch(api.update.rest)
+            fetch(api.update.rest,{
+                method: "PUT",
+                body: JSON.stringify(body)
+            })
             .then(res=>{
                dispatch({type:"HIDDEN"})
             })

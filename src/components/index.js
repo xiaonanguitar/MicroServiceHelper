@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import * as MSActions from '../actions';
 import _ from 'lodash';
 import './index.css';
+import deleteImg from '../images/delete.png';
+import editImg from '../images/edit.png';
+
 const Search = Input.Search;
 
 class App extends Component {
@@ -95,9 +98,9 @@ class App extends Component {
                     <a onClick={()=>{
                         dispatch({type:"MODIFY",record})
                         editShowModal(record)
-                    }}>Edit</a> 
+                    }}><img src={editImg}/></a> 
                     <Popconfirm title="Are you sure？" okText="Yes" cancelText="No" onConfirm={()=>deleteRecord(record)}>
-                        <a>Delete</a> 
+                        <a><img src={deleteImg}/></a>
                     </Popconfirm>
                 </div>
         })
