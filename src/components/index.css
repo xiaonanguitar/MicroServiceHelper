@@ -5,3 +5,12 @@
 .toolBar {
     margin: 10px 0;
 }
+
+.actions {
+    display: inline-block;
+}
+
+.actions a {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}

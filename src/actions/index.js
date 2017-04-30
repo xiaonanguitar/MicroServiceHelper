@@ -17,6 +17,22 @@ export function loadApiData() {
     }
 }
 
+export function deleteRecord(record) {
+    return (dispatch,getState)=>{
+        const state = getState();
+        const api = state.APILoaderState;
+        return fetch(api.delete.rest)
+        .then(res=>{
+            console.log(record.name);
+            fetch(api.retrive.rest)
+            .then(res=>res.json())
+            .then(res=>{
+               dispatch(loadData(res))
+            })
+        })
+    }
+}
+
 export function init(api) {
     return {
         type: 'INIT',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table,Input,Modal,Spin,Button } from 'antd';
+import { Table,Input,Modal,Spin,Button,Popconfirm  } from 'antd';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as MSActions from '../actions';
@@ -82,18 +82,24 @@ class App extends Component {
     }
 
     render() {
-        const {loadApiData,createShowModal,editShowModal} = this.props.MSActions;
+        const {loadApiData,createShowModal,editShowModal,deleteRecord} = this.props.MSActions;
         const {msData,modalState,editorState,creatorState,dispatch} = this.props;
         const dataSource = this.getDataSource(msData.list);
 
         let columns = this.getColumns(msData.list);
         columns.push({ 
-            title: 'Edit', 
-            key: 'edit', 
-            render: (text,record) => <a onClick={()=>{
-                dispatch({type:"MODIFY",record})
-                editShowModal(record)
-            }}>Edit</a> 
+            title: 'Actions', 
+            key: 'actions', 
+            render: (text,record) => 
+                <div className="actions">
+                    <a onClick={()=>{
+                        dispatch({type:"MODIFY",record})
+                        editShowModal(record)
+                    }}>Edit</a> 
+                    <Popconfirm title="Are you sure？" okText="Yes" cancelText="No" onConfirm={()=>deleteRecord(record)}>
+                        <a>Delete</a> 
+                    </Popconfirm>
+                </div>
         })
 
         const rowSelection = {
